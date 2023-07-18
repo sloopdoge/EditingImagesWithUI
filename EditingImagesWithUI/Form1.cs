@@ -39,37 +39,37 @@ namespace EditingImagesWithUI
 
                 clearValues();
 
-                // Create textboxes to specifie every person's rate
-                for (int i = 0; i < crewSize; i++)
-                {
+            // Create textboxes to specifie every person's rate
+            for (int i = 0; i < crewSize; i++)
+            {
 
-                    TextBox personRateInput = new TextBox();
-                    personRateInput.Size = new Size(140, 20);
+                TextBox personRateInput = new TextBox();
+                personRateInput.Size = new Size(140, 20);
                     personRateInput.Location = new Point(160, 12 + i * 30);
                     personRateInput.Name = "personRateInput" + i + 1;
-                    personRateInput.PlaceholderText = i + 1 + " person rate";
-                    Controls.Add(personRateInput);
+                personRateInput.PlaceholderText = i + 1 + " person rate";
+                Controls.Add(personRateInput);
 
-                    personRateInput.TextChanged += (sender, e) =>
+                personRateInput.TextChanged += (sender, e) =>
+                {
+                    int personRate = 0;
+
+                    if (!int.TryParse(personRateInput.Text, out personRate) && personRateInput.Text != "")
                     {
-                        int personRate = 0;
-
-                        if (!int.TryParse(personRateInput.Text, out personRate) && personRateInput.Text != "")
-                        {
-                            new Error().ShowDialog();
+                        new Error().ShowDialog();
 
                             personRateInput.Text = string.Empty;
-                        }
+                    }
                         else
                         {
                             if (int.TryParse(personRateInput.Text, out personRate))
                             {
-                                crew.Add(new Person(1.0 / personRate));
+                    crew.Add(new Person(1.0 / personRate));
                             }
                         }
-                    };
-                }
+                };
             }
+        }
         }
 
         private void calculateTime_Click(object sender, EventArgs e)
