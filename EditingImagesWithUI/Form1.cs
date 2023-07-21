@@ -1,6 +1,7 @@
 using System.Windows.Forms;
 using EditingImagesWithUI;
 using EditingImagesWithUI.entity;
+using EditingImagesWithUI.methods;
 
 namespace EditingImagesWithUI
 {
@@ -45,8 +46,8 @@ namespace EditingImagesWithUI
 
                 TextBox personRateInput = new TextBox();
                 personRateInput.Size = new Size(140, 20);
-                    personRateInput.Location = new Point(160, 12 + i * 30);
-                    personRateInput.Name = "personRateInput" + i + 1;
+                personRateInput.Location = new Point(160, 12 + i * 30);
+                personRateInput.Name = "personRateInput" + i + 1;
                 personRateInput.PlaceholderText = i + 1 + " person rate";
                 Controls.Add(personRateInput);
 
@@ -74,12 +75,7 @@ namespace EditingImagesWithUI
 
         private void calculateTime_Click(object sender, EventArgs e)
         {
-            double totalRate = 0;
-            foreach (Person person in crew)
-            {
-                totalRate += person.Rate;
-            }
-            totalTime = imagesAmount / totalRate;
+            totalTime = Calculation.Calculate(imagesAmount, crew);
 
             totalTimeOutput.Text = totalTime.ToString();
 
