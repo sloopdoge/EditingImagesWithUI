@@ -12,9 +12,10 @@ namespace EditingImagesWithUI
 {
     public partial class Error : Form
     {
-        public Error()
+        public Error(string errorMessage)
         {
             InitializeComponent();
+            this.errorText.Text = errorMessage; 
         }
 
         private void closeButton_Click(object sender, EventArgs e)

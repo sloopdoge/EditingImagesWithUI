@@ -38,9 +38,9 @@
             errorText.AutoSize = true;
             errorText.Location = new Point(39, 9);
             errorText.Name = "errorText";
-            errorText.Size = new Size(173, 15);
+            errorText.Size = new Size(81, 15);
             errorText.TabIndex = 0;
-            errorText.Text = "Input the correct numeric value";
+            errorText.Text = "Error Message";
             errorText.TextAlign = ContentAlignment.TopCenter;
             // 
             // closeButton
